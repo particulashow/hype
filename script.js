@@ -1,24 +1,24 @@
 const params = new URLSearchParams(window.location.search);
 
 const domain = params.get("domain") || "http://localhost:3900";
-const title = params.get("title") || "Hype Reactor";
-const color = params.get("color") || "#00eaff";
+const title = params.get("title") || "Aura do Streamer";
+const auraColor = params.get("auraColor") || "#00eaff";
 
 document.getElementById("title").textContent = title;
-document.documentElement.style.setProperty("--color", color);
+document.documentElement.style.setProperty("--auraColor", auraColor);
 
 const statusEl = document.getElementById("status");
 
 let intensity = 20;
 
 // ELEMENTOS
-const core = document.querySelector(".core");
-const rings = document.querySelectorAll(".ring");
+const glow = document.querySelector(".glow");
+const ring = document.querySelector(".ring");
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
 function resizeCanvas(){
-  const rect = document.getElementById("reactor").getBoundingClientRect();
+  const rect = document.getElementById("aura").getBoundingClientRect();
   canvas.width = rect.width;
   canvas.height = rect.height;
 }
@@ -33,9 +33,9 @@ function spawnParticle() {
     x: canvas.width / 2,
     y: canvas.height / 2,
     angle: Math.random() * Math.PI * 2,
-    speed: 0.6 + Math.random() * (intensity / 30),
-    size: 1.5 + Math.random() * 2.5,
-    life: 30 + Math.random() * 40
+    speed: 0.4 + Math.random() * (intensity / 40),
+    size: 1 + Math.random() * 2,
+    life: 20 + Math.random() * 40
   });
 }
 
@@ -47,8 +47,8 @@ function updateParticles() {
     p.y += Math.sin(p.angle) * p.speed;
     p.life--;
 
-    ctx.fillStyle = color;
-    ctx.globalAlpha = p.life / 70;
+    ctx.fillStyle = auraColor;
+    ctx.globalAlpha = p.life / 60;
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
     ctx.fill();
@@ -63,13 +63,11 @@ function updateParticles() {
 function animate() {
   requestAnimationFrame(animate);
 
-  const scale = 1 + (intensity / 100) * 0.45;
-  core.style.transform = `scale(${scale})`;
+  const scale = 1 + (intensity / 100) * 0.35;
+  glow.style.transform = `scale(${scale})`;
+  glow.style.opacity = 0.5 + intensity / 200;
 
-  rings.forEach((ring, i) => {
-    const base = 8 + i * 3;
-    ring.style.animationDuration = `${base / (1 + intensity / 40)}s`;
-  });
+  ring.style.animationDuration = `${12 / (1 + intensity / 40)}s`;
 
   if (Math.random() < intensity / 100) spawnParticle();
   updateParticles();
@@ -106,7 +104,7 @@ async function fetchData(){
       .map(norm)
       .filter(Boolean);
 
-    const boost = arr.length * 1.4;
+    const boost = arr.length * 1.2;
     if (boost > 0){
       bumpIntensity(boost);
       if (statusEl.textContent.startsWith("A ligar") || statusEl.textContent.startsWith("Sem ligação")){
