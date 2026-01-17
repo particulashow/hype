@@ -4,17 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Hype Reactor</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div id="reactor">
-    <div class="core"></div>
-    <div class="ring ring1"></div>
-    <div class="ring ring2"></div>
-    <div class="ring ring3"></div>
-    <canvas id="particles"></canvas>
+  <div class="frame">
+    <div class="header">
+      <div class="title" id="title">Hype Reactor</div>
+      <div class="meta">
+        <span class="chip">Manda mensagens no chat 🔥</span>
+        <span class="chip chip-muted" id="status">A ligar…</span>
+      </div>
+    </div>
+
+    <div class="reactor-wrapper">
+      <div id="reactor">
+        <div class="core"></div>
+        <div class="ring ring1"></div>
+        <div class="ring ring2"></div>
+        <div class="ring ring3"></div>
+        <canvas id="particles"></canvas>
+      </div>
+    </div>
   </div>
 
-  <script src="reactor.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
