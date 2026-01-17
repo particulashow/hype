@@ -4,7 +4,7 @@
   --stroke: rgba(255,255,255,0.14);
   --glass: rgba(0,0,0,0.18);
 
-  --color: #00eaff;
+  --auraColor: #00eaff;
 }
 
 *{ box-sizing: border-box; }
@@ -35,7 +35,6 @@ body{
 .title{
   font-size: 44px;
   font-weight: 900;
-  letter-spacing: 0.2px;
   text-shadow: 0 12px 38px rgba(0,0,0,0.35);
 }
 
@@ -62,56 +61,49 @@ body{
   font-weight: 700;
 }
 
-.reactor-wrapper{
+.aura-wrapper{
   flex:1;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* REACTOR */
-
-#reactor{
+#aura{
   position: relative;
   width: 420px;
   height: 420px;
 }
 
-.core{
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color) 0%, rgba(0,0,0,0.1) 70%);
-  box-shadow:
-    0 0 30px var(--color),
-    0 0 80px var(--color),
-    0 0 140px rgba(0,0,0,0.8);
-  transition: transform 0.18s ease-out;
+.glow{
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background: radial-gradient(circle, var(--auraColor), transparent 70%);
+  filter: blur(40px);
+  opacity:0.6;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
 }
 
 .ring{
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  border-radius: 50%;
-  border: 3px solid rgba(255,255,255,0.35);
-  box-shadow: 0 0 24px rgba(0,0,0,0.6);
-  opacity: 0.7;
-  animation: spin 8s linear infinite;
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  border: 4px solid var(--auraColor);
+  opacity:0.8;
+  animation: spin 12s linear infinite;
 }
 
-.ring1{ width: 210px; height: 210px; }
-.ring2{ width: 280px; height: 280px; animation-duration: 11s; }
-.ring3{ width: 350px; height: 350px; animation-duration: 15s; }
-
 #particles{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
   pointer-events:none;
 }
 
