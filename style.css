@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+#reactor {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+.core {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--color) 0%, transparent 70%);
+  box-shadow: 0 0 40px var(--color), 0 0 80px var(--color);
+  transition: transform 0.2s ease-out;
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid var(--color);
+  animation: spin 6s linear infinite;
+  opacity: 0.6;
+}
+
+.ring1 { width: 200px; height: 200px; animation-duration: 6s; }
+.ring2 { width: 260px; height: 260px; animation-duration: 9s; }
+.ring3 { width: 320px; height: 320px; animation-duration: 12s; }
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
