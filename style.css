@@ -1,44 +1,121 @@
-body {
-  margin: 0;
+:root{
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.66);
+  --stroke: rgba(255,255,255,0.14);
+  --glass: rgba(0,0,0,0.18);
+
+  --color: #00eaff;
+}
+
+*{ box-sizing: border-box; }
+html, body{ height:100%; }
+
+body{
+  margin:0;
   background: transparent;
-  overflow: hidden;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  color: var(--text);
 }
 
-#reactor {
+.frame{
+  width: 1920px;
+  height: 600px;
+  padding: 26px 34px;
+  display:flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.header{
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.title{
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 0.2px;
+  text-shadow: 0 12px 38px rgba(0,0,0,0.35);
+}
+
+.meta{
+  display:flex;
+  gap:10px;
+  flex-wrap: wrap;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: var(--glass);
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.chip-muted{
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.reactor-wrapper{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* REACTOR */
+
+#reactor{
+  position: relative;
+  width: 420px;
+  height: 420px;
+}
+
+.core{
   position: absolute;
   inset: 0;
   margin: auto;
-  width: 400px;
-  height: 400px;
-}
-
-.core {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--color) 0%, transparent 70%);
-  box-shadow: 0 0 40px var(--color), 0 0 80px var(--color);
-  transition: transform 0.2s ease-out;
+  background: radial-gradient(circle, var(--color) 0%, rgba(0,0,0,0.1) 70%);
+  box-shadow:
+    0 0 30px var(--color),
+    0 0 80px var(--color),
+    0 0 140px rgba(0,0,0,0.8);
+  transition: transform 0.18s ease-out;
 }
 
-.ring {
+.ring{
   position: absolute;
   inset: 0;
   margin: auto;
   border-radius: 50%;
-  border: 3px solid var(--color);
-  animation: spin 6s linear infinite;
-  opacity: 0.6;
+  border: 3px solid rgba(255,255,255,0.35);
+  box-shadow: 0 0 24px rgba(0,0,0,0.6);
+  opacity: 0.7;
+  animation: spin 8s linear infinite;
 }
 
-.ring1 { width: 200px; height: 200px; animation-duration: 6s; }
-.ring2 { width: 260px; height: 260px; animation-duration: 9s; }
-.ring3 { width: 320px; height: 320px; animation-duration: 12s; }
+.ring1{ width: 210px; height: 210px; }
+.ring2{ width: 280px; height: 280px; animation-duration: 11s; }
+.ring3{ width: 350px; height: 350px; animation-duration: 15s; }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+#particles{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events:none;
+}
+
+@keyframes spin{
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
 }
